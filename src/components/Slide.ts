@@ -30,6 +30,14 @@ export default defineComponent({
     const isNext: ComputedRef<boolean> = computed(
       () => props.index === currentSlide.value + 1
     )
+    const isThird: ComputedRef<boolean> = computed(
+        () => props.index === currentSlide.value + 2
+
+    )
+    const isFourth: ComputedRef<boolean> = computed(
+        () => props.index === currentSlide.value + 3
+    )
+
     const isVisible: ComputedRef<boolean> = computed(() => {
       const min = Math.floor(slidesToScroll.value)
       const max = Math.ceil(slidesToScroll.value + config.itemsToShow - 1)
@@ -49,6 +57,8 @@ export default defineComponent({
             'carousel__slide--active': isActive.value,
             'carousel__slide--prev': isPrev.value,
             'carousel__slide--next': isNext.value,
+            'carousel__slide--third':isThird.value,
+            'carousel__slide--fourth':isFourth.value,
             'carousel__slide--sliding': isSliding.value,
           },
           'aria-hidden': !isVisible.value,
@@ -58,6 +68,8 @@ export default defineComponent({
           isClone: props.isClone,
           isPrev: isPrev.value,
           isNext: isNext.value,
+          isThird: isThird.value,
+          isFourth:isFourth.value,
           isSliding: isSliding.value,
           isVisible: isVisible.value
         })
